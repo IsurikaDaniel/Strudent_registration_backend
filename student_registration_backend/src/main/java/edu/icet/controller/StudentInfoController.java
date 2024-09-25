@@ -4,6 +4,7 @@ import edu.icet.dto.StudentInfo;
 import edu.icet.service.StudentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class StudentInfoController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addInfo(@RequestBody StudentInfo studentInfo){
         service.addInfo(studentInfo);
     }

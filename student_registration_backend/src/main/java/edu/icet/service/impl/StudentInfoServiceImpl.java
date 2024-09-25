@@ -4,7 +4,9 @@ import edu.icet.dto.StudentInfo;
 import edu.icet.repository.StudentInfoRepository;
 import edu.icet.service.StudentInfoService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +15,17 @@ import java.util.List;
 public class StudentInfoServiceImpl implements StudentInfoService {
 
     @Autowired
-    private StudentInfoRepository repository;
+     StudentInfoRepository repository;
 
+    ModelMapper mapper;
+
+    @Bean
+    public void studentSetup(){
+        this.mapper = new ModelMapper();
+    }
     @Override
     public void addInfo(StudentInfo studentinfo) {
+        StudentInfo entity = mapper.map(studentinfo, StudentInfo.class);
         repository.save(studentinfo);
     }
 

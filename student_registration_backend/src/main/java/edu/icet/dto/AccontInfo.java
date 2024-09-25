@@ -6,30 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDate;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "StudentInfo")
-public class StudentInfo {
+@Table(name = "AccountInfo")
+public class AccontInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    String name;
-    Integer contact;
-    LocalDate dob;
-    Integer age;
     String email;
-    String course;
-
-    String gurname;
-    Integer gurcontact;
-    String guremail;
-    String guraddress;
-
+    String password;
 }
+
